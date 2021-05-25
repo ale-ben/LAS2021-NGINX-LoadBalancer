@@ -4,27 +4,27 @@ services:
     WebServer1:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
+        networks:
             - WebServer
     WebServer2:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
+        networks:
             - WebServer
     WebServer3:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
+        networks:
             - WebServer
     WebServer4:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
+        networks:
             - WebServer
     LoadBalancer:
         build: Dockerfiles/load-balancer/.
         image: loadbalancer
-        networks: 
+        networks:
             - WebServer
         ports:
             - "80:80"
@@ -39,7 +39,7 @@ services:
         image: monitor
         stdin_open: true
         tty: true
-        networks: 
+        networks:
             - WebServer
 
 networks:

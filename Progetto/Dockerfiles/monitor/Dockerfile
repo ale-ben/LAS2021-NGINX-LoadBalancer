@@ -1,8 +1,8 @@
-FROM ubuntu
+FROM ubuntu:latest
 RUN echo -e "\t\tUpdating APT"
 RUN apt update
 RUN echo -e "\t\tInstalling packages"
-RUN apt install -y curl \
+RUN apt-get install -y curl \
 					wget \
 					iputils-ping \
 					vim \
