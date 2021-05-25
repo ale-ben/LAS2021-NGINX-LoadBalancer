@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    MultiPurpose:
+        container_name: MP
+        stdin_open: true
+        tty: true
+        privileged: true
+        build: ./dockerfiles/ubuntu/
+        image: multipurpose
+        volumes:
+            - dockerUni:/dockerUni
+            - dockerCommon:/dockerCommon
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/II_Anno/CyberChallenge:/CC"
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/II_Anno/CT0125-Sistemi_Operativi_B:/SOB"
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0539-Sicurezza:/SEC"
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University:/UNI"
+        networks: 
+            - dockerUni
+
+networks:
+    dockerUni:          
+volumes:
+    dockerUni:
+    dockerCommon:

@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+    WebServer1:
+        build: Dockerfiles/webserver/.
+        image: webserver
+        networks: 
+            - WebServer
+    WebServer2:
+        build: Dockerfiles/webserver/.
+        image: webserver
+        networks: 
+            - WebServer
+    WebServer3:
+        build: Dockerfiles/webserver/.
+        image: webserver
+        networks: 
+            - WebServer
+    WebServer4:
+        build: Dockerfiles/webserver/.
+        image: webserver
+        networks: 
+            - WebServer
+    LoadBalancer:
+        build: Dockerfiles/load-balancer/.
+        image: loadbalancer
+        networks: 
+            - WebServer
+        ports:
+            - "80:80"
+        depends_on:
+            - WebServer1
+            - WebServer2
+            - WebServer3
+            - WebServer4
+    Monitor:
+        container_name: MON
+        build: Dockerfiles/monitor/.
+        image: monitor
+        stdin_open: true
+        tty: true
+        networks: 
+            - WebServer
+
+networks:
+    WebServer:

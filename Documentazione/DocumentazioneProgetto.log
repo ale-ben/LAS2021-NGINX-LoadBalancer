@@ -1,0 +1,1071 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=latex 2021.5.20)  20 MAY 2021 19:08
+entering extended mode
+**\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCo
+de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
+{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
+documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
+ tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode .a.b.c.\input  Documentazio
+neProgetto.tex
+ (DocumentazioneProgetto.tex
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count179
+\c@section=\count180
+\c@subsection=\count181
+\c@subsubsection=\count182
+\c@paragraph=\count183
+\c@subparagraph=\count184
+\c@figure=\count185
+\c@table=\count186
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/tex4ht.s
+ty
+version 2021-01-02-13:53
+Package: tex4ht 
+--------------------------------------
+--- Note --- for _ at preamble, use the command line option `early_'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ at preamble, use the command line option `early^'
+--------------------------------------
+\tmp:toks=\toks15
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/usepacka
+ge.4ht
+version 2021-02-07-14:58
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphicx
+.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/keyval.s
+ty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/graphics
+-hooks.4ht
+version 2020-10-17-13:53
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphics
+.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/grap
+hics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 105.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-def/dvip
+s.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/listings
+.sty
+\lst@mode=\count187
+\lst@gtempboxa=\box47
+\lst@token=\toks17
+\lst@length=\count188
+\lst@currlwidth=\dimen141
+\lst@column=\count189
+\lst@pos=\count190
+\lst@lostspace=\dimen142
+\lst@width=\dimen143
+\lst@newlines=\count191
+\lst@lineno=\count192
+\lst@maxwidth=\dimen144
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/lstmisc.
+sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count193
+\lst@skipnumbers=\count194
+\lst@framebox=\box48
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/listings/listings
+.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/xcolor-h
+ooks.4ht
+version 2020-10-17-13:53
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/colo
+r.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsmath.s
+ty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amstext.s
+ty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsgen.st
+y
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen145
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsbsy.st
+y
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen146
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsopn.st
+y
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count195
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count196
+\leftroot@=\count197
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count198
+\DOTSCASE@=\count199
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box49
+\strutbox@=\box50
+\big@size=\dimen147
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count266
+\c@MaxMatrixCols=\count267
+\dotsspace@=\muskip16
+\c@parentequation=\count268
+\dspbrk@lvl=\count269
+\tag@help=\toks19
+\row@=\count270
+\column@=\count271
+\maxfields@=\count272
+\andhelp@=\toks20
+\eqnshift@=\dimen148
+\alignsep@=\dimen149
+\tagshift@=\dimen150
+\tagwidth@=\dimen151
+\totwidth@=\dimen152
+\lineht@=\dimen153
+\@envbody=\toks21
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen154
+\lightrulewidth=\dimen155
+\cmidrulewidth=\dimen156
+\belowrulesep=\dimen157
+\belowbottomsep=\dimen158
+\aboverulesep=\dimen159
+\abovetopsep=\dimen160
+\cmidrulesep=\dimen161
+\cmidrulekern=\dimen162
+\defaultaddspace=\dimen163
+\@cmidla=\count273
+\@cmidlb=\count274
+\@aboverulesep=\dimen164
+\@belowrulesep=\dimen165
+\@thisruleclass=\count275
+\@lastruleclass=\count276
+\@thisrulewidth=\dimen166
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amssymb.
+sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfonts
+.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/ulem/ulem.sty
+\UL@box=\box51
+\UL@hyphenbox=\box52
+\UL@skip=\skip52
+\UL@hook=\toks23
+\UL@height=\dimen167
+\UL@pe=\count277
+\UL@pixel=\dimen168
+\ULC@box=\box53
+Package: ulem 2019/11/18
+\ULdepth=\dimen169
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/latex-tools/array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+\col@sep=\dimen170
+\ar@mcellbox=\box54
+\extrarowheight=\dimen171
+\NC@list=\toks24
+\extratabsurround=\skip53
+\backup@length=\skip54
+\ar@cellbox=\box55
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/ifvtex.st
+y
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count278
+\Gm@cntv=\count279
+\c@Gm@tempcnt=\count280
+\Gm@bindingoffset=\dimen172
+\Gm@wd@mp=\dimen173
+\Gm@odd@mp=\dimen174
+\Gm@even@mp=\dimen175
+\Gm@layoutwidth=\dimen176
+\Gm@layoutheight=\dimen177
+\Gm@layouthoffset=\dimen178
+\Gm@layoutvoffset=\dimen179
+\Gm@dimlist=\toks25
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/geometry/geometry.cfg))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/hyperref
+-hooks.4ht)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/hyperref
+.sty
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/pdftexcmds/pdft
+excmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+
+
+Package auxhook Warning: Cannot patch \document,
+(auxhook)                using \AtBeginDocument instead.
+
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen180
+\Hy@linkcounter=\count281
+\Hy@pagecounter=\count282
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/pd1enc.d
+ef
+File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/hyperref
+-langpatches.def
+File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
+nguages
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count283
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/puenc.de
+f
+File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4073.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count284
+ (/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen181
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count285
+\Field@Width=\dimen182
+\Fld@charsize=\dimen183
+\Field@toks=\toks26
+Package hyperref Info: Hyper figures OFF on input line 6075.
+Package hyperref Info: Link nesting OFF on input line 6080.
+Package hyperref Info: Hyper index ON on input line 6083.
+Package hyperref Info: backreferencing OFF on input line 6090.
+Package hyperref Info: Link coloring ON on input line 6093.
+Package hyperref Info: Link coloring with OCG OFF on input line 6100.
+Package hyperref Info: PDF/A mode OFF on input line 6105.
+LaTeX Info: Redefining \ref on input line 6145.
+LaTeX Info: Redefining \pageref on input line 6149.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/base/atbegshi-ltx
+.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count286
+
+
+Package hyperref Message: Stopped early.
+
+)
+Package hyperref Info: Driver: htex4ht.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/htex4ht.
+def
+File: htex4ht.def 2021-02-27 v7.00k Hyperref driver for TeX4ht
+Package hyperref Info: tex4ht is already loaded.
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/nameref.
+sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count287
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/subfiles/subfiles.sty
+Package: subfiles 2020/11/14 v2.2 Multi-file projects (package)
+
+(/Users/alessandrobenetton/Library/Application Support/MiKTeX/texmfs/install/te
+x/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/tex4ht.4
+ht
+version 2020-03-12-14:03
+--------------------------------------
+--- Note --- for additional information, use the command line option `info'
+--------------------------------------
+
+::::::::::::::::::::::::::::::::::::::::::
+ TeX4ht info is available in the log file 
+::::::::::::::::::::::::::::::::::::::::::
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/tex4ht.s
+ty
+version 2021-01-02-13:53
+
+--- needs --- tex4ht DocumentazioneProgetto ---
+\tmp:cnt=\count288
+\openout15 = `DocumentazioneProgetto.tmp'.
+
+(DocumentazioneProgetto.tmp)
+\tmp:dim=\skip55
+--------------------------------------
+--- Note --- for XML code, use the command line option `xml' or `xhtml'
+--------------------------------------
+ (DocumentazioneProgetto.xref)
+\:refout=\write3
+\openout3 = `DocumentazioneProgetto.xref'.
+
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- to remove the <?xml version=...?> processing instruction use the c
+ommand line option `no-VERSION'
+--------------------------------------
+--------------------------------------
+--- Note --- to remove the DOCTYPE declaration use the command line option `no-
+DOCTYPE'
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+)
+--------------------------------------
+--- Note --- for marking of the base font, use the command line option `fonts+'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for non active _, use the command line option `no_'
+--------------------------------------
+--------------------------------------
+--- Note --- for _ of catcode 13, use the command line option `_13'
+--------------------------------------
+--------------------------------------
+--- Note --- for non active ^, use the command line option `no^'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ of catcode 13, use the command line option `^13'
+--------------------------------------
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- for alternative charset, use the command line option `charset=...'
+
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS font decoration, use the `NoFonts' command line opti
+on
+--------------------------------------
+--------------------------------------
+--- Note --- for jpg bitmaps of pictures, use the `jpg' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for gif bitmaps of pictures, use the `gif' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for content and toc in 2 frames, use the command line option `fram
+es'
+--------------------------------------
+--------------------------------------
+--- Note --- for content, toc, and footnotes in 3 frames, use the command line 
+option `frames-fn'
+--------------------------------------
+--------------------------------------
+--- Note --- for file extension name xht, use the command line option `xht'
+--------------------------------------
+TeX4ht package options: html
+--------------------------------------
+--- Note --- To print a timestamp, use the command line option timestamp
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS code, use the command line option `-css
+--------------------------------------
+--------------------------------------
+--- Note --- for inline CSS code, use the command line option `css-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for pop ups on mouse over, use the command line option `mouseover'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for addressing images in a subdirectory, use the command line opti
+on `imgdir:.../'
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+)
+\:tokwrite=\toks27
+\:tokpage=\toks28
+--------------------------------------
+--- Note --- for back links to toc, use the command line option `sections+'
+--------------------------------------
+--------------------------------------
+--- Note --- for linear crosslinks of pages, use the command line option `next'
+
+--------------------------------------
+\openout15 = `DocumentazioneProgetto.4ct'.
+
+\:tocout=\write4
+\openout4 = `DocumentazioneProgetto.4tc'.
+
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/latex.4h
+t
+version 2021-02-06-14:21
+LaTeX Info: Redefining \_ on input line 173.
+LaTeX Info: Redefining \, on input line 791.
+LaTeX Info: Redefining \; on input line 792.
+LaTeX Info: Redefining \! on input line 793.
+LaTeX Info: Redefining \: on input line 794.
+LaTeX Info: Redefining \> on input line 795.
+--------------------------------------
+--- Note --- for links into captions, instead of float heads, use the command l
+ine option `refcaption'
+--------------------------------------
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- For mini tocs immediately aftter the header use the command line o
+ption `minitoc<'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements with valued data, use the command lin
+e option `enumerate+'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements li's with value attributes, use the c
+ommand line option `enumerate-'
+--------------------------------------
+--------------------------------------
+--- Note --- for CSS2 code, use the command line option `css2'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial tabular, use the command line option `pic-tabular'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap fbox'es, use the command line option `pic-fbox'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap framebox'es, use the command line option `pic-framebox'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for inline footnotes use command line option `fn-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for tracing of latex font commands, use the command line option `f
+onts'
+--------------------------------------
+--------------------------------------
+--- Note --- for width specifications of tabular p entries, use the `p-width' c
+ommand line option or a configuration similar to \Configure{HColWidth}{\HCode{ 
+style="width:\HColWidth"}}
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+--------------------------------------
+--- Note --- for pictorial eqnarray, use the command line option `pic-eqnarray'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ environments, use the command line option `pic
+-m' (not recommended!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ and $$...$$ environments with latex alt, use t
+he command line option `pic-m+' (not safe!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/fontmath
+.4ht
+version 2018-11-06-15:55
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/article.
+4ht
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- for automatic sectioning pagination, use the command line option `
+1', `2', `3', '4', '5', '6', or '7'
+--------------------------------------
+--------------------------------------
+--- Note --- for files named derived from section titles, use the command line 
+option `sec-filename'
+--------------------------------------
+--------------------------------------
+--- Note --- for i-columns index, use the command line option `index=i' (e.g., 
+index=2)
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/graphicx
+.4ht
+version 2018-10-01-14:24
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/graphics
+.4ht
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- if included graphics are of degraded quality, try the command line
+ options `graphics-num' or `graphics-'. The `num' should provide the density of
+ pixels in the bitmaps (e.g., 110). 
+--------------------------------------
+--------------------------------------
+--- Note --- for key dimensions try the option `Gin-dim'; for key dimensions wh
+en bounding box is unavailable try `Gin-dim+'; neither is recommended
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/dvips.4h
+t
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/listings
+.4ht
+version 2020-02-13-13:43
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- to ensure proper alignments use fixed size fonts (see listings.dtx
+)
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/xcolor.4
+ht
+version 2019-04-09-10:06
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/color.4h
+t
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/color.4h
+t)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amsmath.
+4ht
+version 2019-12-29-14:17
+\tmp:muskip=\muskip18
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+LaTeX Info: Redefining \[ on input line 503.
+LaTeX Info: Redefining \] on input line 503.
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amstext.
+4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amsbsy.4
+ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amsopn.4
+ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/booktabs
+.4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amssymb.
+4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/amsfonts
+.4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/ulem.4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/array.4h
+t
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/geometry
+.4ht
+version 2016-07-01-08:55
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/hyperref
+.4ht
+version 2021-01-02-13:53
+LaTeX Info: Redefining \autoref on input line 88.
+\Hy@SectionHShift=\skip56
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/pd1enc.4
+ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/url.4ht
+version 2009-05-21-09:32
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+--------------------------------------
+--- Note --- for URL encoding within href use the command line option `url-enc'
+
+--------------------------------------
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/nameref.
+4ht
+version 2021-02-03-14:57
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4.4h
+t
+version 2021-02-14-13:56
+)
+(/Library/Application Support/MiKTeX/texmfs/install/tex/generic/tex4ht/html4-ma
+th.4ht
+version 2021-01-30-14:17
+))
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3backe
+nd-dvips.def
+File: l3backend-dvips.def 2021-05-07 L3 backend support: dvips
+\l__pdf_internal_box=\box56
+\g__pdf_backend_object_int=\count289
+\l__pdf_backend_content_box=\box57
+\l__pdf_backend_model_box=\box58
+\g__pdf_backend_annotation_int=\count290
+\g__pdf_backend_link_int=\count291
+\g__pdf_backend_link_sf_int=\count292
+) (DocumentazioneProgetto.aux)
+\openout1 = `DocumentazioneProgetto.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+\c@lstlisting=\count293
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(56.9055pt, 455.24411pt, 85.35826pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=591.5302pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=103.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 67.
+LaTeX Info: Redefining \ref on input line 67.
+LaTeX Info: Redefining \pageref on input line 67.
+LaTeX Info: Redefining \nameref on input line 67.
+--- file DocumentazioneProgetto.css ---
+[1
+
+] [2]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 69.
+
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
+
+(/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3] (DocumentazioneProgetto.4ct) [4] (DocumentazioneProgetto.4ct) [5]
+(sections/capitolo1.tex [1] (DocumentazioneProgetto.aux) ) )
+(\end occurred inside a group at level 1)
+
+### semi simple group (level 1) entered at line 77 (\begingroup)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 15314 strings out of 479165
+ 221529 string characters out of 2851028
+ 642171 words of memory out of 3000000
+ 32611 multiletter control sequences out of 15000+600000
+ 410198 words of font info for 53 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 66i,7n,88p,805b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on DocumentazioneProgetto.dvi (6 pages, 14844 bytes).

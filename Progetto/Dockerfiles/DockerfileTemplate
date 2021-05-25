@@ -1,0 +1,59 @@
+FROM ubuntu
+RUN apt update 
+RUN apt upgrade -y
+RUN apt install -y apt-utils
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
+RUN ln -fs /usr/share/zoneinfo/Europe/Rome /etc/localtime
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+RUN apt install -y \
+    vim \
+    exiv2 \
+    imagemagick \
+    binutils \
+    wget \
+    ltrace \
+    strace \
+    git \
+    gcc \
+    gdb \
+    tmux \
+    locales \
+    gcc-multilib \
+    hexedit \
+    htop \
+    netcat \
+    binwalk \
+    pngcheck \
+    bsdmainutils \
+    man
+
+# Set the locale
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
+
+RUN mkdir /programSources
+ADD Contents /programSources
+
+RUN echo -e "\t\tCloning Repos"
+WORKDIR /programSources
+RUN git clone https://github.com/jerdna-regeiz/splitmind.git
+RUN git clone https://github.com/pwndbg/pwndbg.git
+RUN git clone https://github.com/radareorg/radare2
+
+RUN echo -e "\t\tConfiguring Pwndbg"
+WORKDIR /programSources/pwndbg
+RUN chmod +x setup.sh
+RUN ./setup.sh
+
+RUN echo -e "\t\tConfiguring radere2"
+WORKDIR /programSources/radare2/sys
+RUN chmod +x install.sh
+RUN ./install.sh
+
+RUN echo -e "\t\tCopying gdbinit"
+RUN mv /programSources/.gdbinit /root/.gdbinit
+
+WORKDIR /root
+ENTRYPOINT ["/bin/bash"]
