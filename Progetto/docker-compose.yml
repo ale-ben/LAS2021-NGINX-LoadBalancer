@@ -71,15 +71,15 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "LB"
-    Syslogserver: 
+    Syslogserver:
         build: Dockerfiles/rsyslog/.
-        image: syslogserver 
+        image: syslogserver
         container_name: Syslog
         hostname: syslog
         restart: always
-        volumes: 
-            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0157-Laboratorio_Amministrazione_Sistema/LAS2021-NGINX-LoadBalancer/Progetto/logs:/var/log" 
-        ports: 
+        volumes:
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0157-Laboratorio_Amministrazione_Sistema/LAS2021-NGINX-LoadBalancer/Progetto/logs:/var/log"
+        ports:
             - 514:514
             - 514:514/udp
         cap_add:
