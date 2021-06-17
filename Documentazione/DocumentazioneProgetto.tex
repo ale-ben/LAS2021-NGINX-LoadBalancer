@@ -1,16 +1,18 @@
-\documentclass[11pt,twoside,a4paper]{article}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
 \usepackage{graphicx}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{amssymb}
-\usepackage{ulem}
 \usepackage{array}
+\usepackage{listings}
+\usepackage{color,soul}
+\usepackage{xcolor}
+\usepackage{booktabs}
 \usepackage{geometry}
 \geometry{
 	a4paper,
-	left=20mm,
+	left=20mm, 
 	right=30mm,
 }
 \usepackage{hyperref}
@@ -24,11 +26,11 @@
 
 \usepackage{subfiles} % Best loaded last in the preamble
 
-\graphicspath{{./resources/capitolo1}{./resources/capitolo2}{../../AAA_Common_Resources/}}
+\graphicspath{{./resources/1-introduzione}{../../AAA_Common_Resources/}}
 
 \title{%
-	\huge Creazione di una serie di webserver\\ con Load Balancer NGINX \\
-	\normalsize [CT0157] --- Laboratorio Amministrazione Sistemi\\
+	\huge Creazione di una serie di webserver con Load Balancer e log centralizzato tramite Docker\\
+	\normalsize Progetto per il corso Laboratorio Amministrazione Sistemi --- [CT0157]\\
 	\normalsize Docente \textit{Fabrizio Romano}}
 	
 
@@ -43,6 +45,34 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 	
+% Impostazioni Header e Footer
+\fancypagestyle{defaultPageStyle}{%
+   \pagestyle{fancy}
+    \fancyhf{}
+    \lhead{\leftmark}
+    \rhead{Progetto LAS 2020/2021}
+    \lfoot{Alessandro Benetton --- [874886]}
+    \rfoot{Pagina \thepage \space di \space \pageref{LastPage}}
+    \cfoot{31/05/2021}
+    
+    \renewcommand{\headrulewidth}{2pt}
+    \renewcommand{\footrulewidth}{1pt}
+}
+
+\fancypagestyle{noTRPageStyle}{%
+    \pagestyle{defaultPageStyle}
+   \rhead{}
+}
+
+\def\signed #1{{\leavevmode\unskip\nobreak\hfil\penalty50\hskip2em
+  \hbox{}\nobreak\hfil(#1)%
+  \parfillskip=0pt \finalhyphendemerits=0 \endgraf}}
+
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{#1}\begin{quote}}
+  {\signed{\usebox\mybox}\end{quote}}
+
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{backcolour},   
 	commentstyle=\color{codegreen},
@@ -73,10 +103,26 @@
 	\listoffigures
 	\newpage
 	\pagenumbering{arabic}
+
+	\pagestyle{defaultPageStyle}
+	\subfile{sections/1-introduzione.tex}
+	\newpage
+	\subfile{sections/2-struttura.tex}
+	\newpage
+	\subfile{sections/3-webserver.tex}
+	\newpage
+	\subfile{sections/4-loadbalancer.tex}
+	\newpage
+	\subfile{sections/5-logserver.tex}
+	\newpage
+	\subfile{sections/6-docker-compose.tex}
+	\newpage
+	\subfile{sections/7-progettofinito.tex}
+	%\pagestyle{noTRPageStyle}
 	
-	\subfile{sections/capitolo1.tex}
-	\newpage
-	\subfile{sections/capitolo2.tex}
-	\newpage
+	
+	
+	
+	
 
 \end{document}
