@@ -4,26 +4,59 @@ services:
     WebServer1:
         build: Dockerfiles/webserver/.
         image: webserver
+        container_name: WS1
         networks:
             - WebServer
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS1"
     WebServer2:
         build: Dockerfiles/webserver/.
         image: webserver
+        container_name: WS2
         networks:
             - WebServer
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS2"
     WebServer3:
         build: Dockerfiles/webserver/.
         image: webserver
+        container_name: WS3
         networks:
             - WebServer
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS3"
     WebServer4:
         build: Dockerfiles/webserver/.
         image: webserver
+        container_name: WS4
         networks:
             - WebServer
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS4"
     LoadBalancer:
         build: Dockerfiles/load-balancer/.
         image: loadbalancer
+        container_name: LB
         networks:
             - WebServer
         ports:
@@ -33,6 +66,24 @@ services:
             - WebServer2
             - WebServer3
             - WebServer4
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "LB"
+    Syslogserver: 
+        build: Dockerfiles/rsyslog/.
+        image: syslogserver 
+        container_name: Syslog
+        hostname: syslog
+        restart: always
+        volumes: 
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0157-Laboratorio_Amministrazione_Sistema/LAS2021-NGINX-LoadBalancer/Progetto/logs:/var/log" 
+        ports: 
+            - 514:514
+            - 514:514/udp
+        cap_add:
+            - SYSLOG
     Monitor:
         container_name: MON
         build: Dockerfiles/monitor/.
@@ -41,6 +92,13 @@ services:
         tty: true
         networks:
             - WebServer
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "MON"
 
 networks:
     WebServer:
