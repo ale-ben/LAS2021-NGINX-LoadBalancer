@@ -4,17 +4,79 @@
 
 \begin{document}
 	%I webserver NGINX 
-	\section{I webserver NGINX} 
+	\section{I webserver NGINX}
+	Pe l'implementazione del webserver vero e proprio useremo NGINX.\\
+	Partiremo da un immagine docker con NGINX pre installato e la integreremo nel nostro insieme di servizi docker.
+
+	Nella sezione \textit{\nameref{sec:webserverDistribuito}} si è detto che vi saranno molteplici webserver tra cui dividere le richieste,
+	nella realtà questi webserver si troverebbero su macchine differenti al fine di dividere il carico ma, dato che questo progetto è puramente dimostrativo, qui verranno implementate nello stesso host come istanze della stessa immagine docker (verranno comunque evidenziati i cambiamenti necessari per implementare la soluzione multi host).
 	%Dockerfile 
 	\subsection{Dockerfile} 
-	Content Here
+	\label{sec:WebserverDockerfile}
+	Di seguito il dockerfile per la creazione di un singolo webhost NGINX.
+	\begin{lstlisting}[language=XML, caption=Dockerfile Webserver NGINX] 
+FROM nginx:1.21.0
+RUN echo -e "\t\tCopying Config"
+COPY Contents/nginx.conf /etc/nginx/nginx.conf
+RUN echo -e "\t\tCopying WebServer"
+COPY Contents/website /www/data\end{lstlisting}
+	Questo dockerfile sarà lo stesso per il webserver e per il loadbalancer, entrambi usano NGINX, le differenze si vedranno nella configurazione del servizio e del container (\autoref{sec:WebserverConfigurazione} e \autoref{sec:WebserverDockerCompose}).
+	%Analisi Dockerfile 
+	\subsubsection{Analisi Dockerfile} 
+	Scegliamo di utilizzare l'immagine \textit{nginx} alla versione \textit{1.21.0} presente nella \href{https://hub.docker.com/_/nginx}{repository di immagini ufficiale docker}.\\ 
+	Si può facilmente notare che questa è una versione ufficiale poichè non	è preceduta dal nome dell'utente che la gestisce 
+	(altrimenti sarebbe \textit{utente/nginx}).
+
+	L'unica modifica che facciamo all'immagine è caricare il nostro file \textit{nginx.conf} nella cartella \textit{/etc/nginx/}. Andremo ad analizzare il file di config nella \autoref{sec:WebserverConfigurazione}.
+	
+	%Servizio docker compose 
+	\subsection{Servizio docker compose} 
+	\label{sec:WebserverDockerCompose}
+	Aggiungiamo molteplici istanze del webserver web a docker compose
+	\begin{lstlisting}[caption=Webserver Docker Compose] 
+WebServer1:
+	build: Dockerfiles/webserver/.
+	image: webserver
+	container_name: WS1
+	networks:
+		- Internal\end{lstlisting}
+	La prima riga indica il nome univoco del servizio, ogni istanza del webserver deve avere il proprio nome univoco.\\
+	Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine se questa non è presente.\\
+	Riga 3 indica il nome dell'immagine. Se non è presente in locale verrà o presa dalla repo remota o buildata (se è presente l'istruzione build).\\
+	Riga 4 indica un nickname per il servizio.\\
+	Riga 6 impone alla macchina di collegarsi al network \textit{Internal}, il quale non ha accesso alla rete esterna. 
+	\paragraph{Per implementare un sistema multi host} le righe 5 e 6 vanno sostituite con la porta su cui esporre il servizio nel formato \textit{Porta fisica:Porta Virtuale}, 
+	dove:
+	\begin{itemize}
+		\item \textit{Porta Fisica} è la porta dell'host su cui esporre il servizio
+		\item \textit{Porta Virtuale} è la porta del container a cui collegare la porta fisica 
+	\end{itemize}
+	\begin{lstlisting}[caption=Webserver Docker Compose in multi host] 
+WebServer:
+	build: Dockerfiles/webserver/.
+	image: webserver
+	container_name: WS
+	ports:
+		- "80:80"\end{lstlisting}
+	Da notare che, dato che in questo caso i webserver vengono eseguiti su macchine diverse, non è più necessario distinguere i nomi dei servizi.
 	%Configurazione 
 	\subsection{Configurazione} 
-	Content Here
-	%Servizio docker compose 
-\subsection{Servizio docker compose} 
-Content Here
-%Il comando \textit{scale} di Docker 
-\subsubsection{Il comando \textit{scale} di Docker} 
-Content Here
+	\label{sec:WebserverConfigurazione}
+	\begin{lstlisting}[caption=File di configurazione webserver NGINX] 
+events {}
+http {
+	server {
+		listen      80;
+		location /images/ {
+			root /www/static/images;
+		}
+		location / {
+			root /www/data;
+		}
+	}
+}\end{lstlisting}
+	Nella configurazione del webserver viene definita la porta su cui ascoltare e le posizioni in cui trovare i file, in questo caso \textit{"/www/static/images"} per le pagine all'indirizzo \textit{"/images"}, \textit{"/www/data"} per tutte le altre.\\
+	Nuovi path per il webserver verrano aggiunti qui, rispettando le linee guida della \href{https://docs.nginx.com/nginx/admin-guide/web-server/web-server/}{documentazione NGINX}.
+	
+
 \end{document}  
