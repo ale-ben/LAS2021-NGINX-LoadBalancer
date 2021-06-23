@@ -14,3 +14,8 @@ jobs:
         with:
           root_file: DocumentazioneProgetto.tex
           working_directory: Documentazione/
+      - name: Upload LaTEX artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Benetton_Alessandro_874886-DocumentazioneProgetto
+          path: Documentazione/DocumentazioneProgetto.pdf
