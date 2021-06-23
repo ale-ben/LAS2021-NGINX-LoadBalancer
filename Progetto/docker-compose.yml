@@ -6,7 +6,7 @@ services:
         image: webserver
         container_name: WS1
         networks:
-            - WebServer
+            - Internal
         depends_on:
             - Syslogserver
         logging:
@@ -19,7 +19,7 @@ services:
         image: webserver
         container_name: WS2
         networks:
-            - WebServer
+            - Internal
         depends_on:
             - Syslogserver
         logging:
@@ -32,7 +32,7 @@ services:
         image: webserver
         container_name: WS3
         networks:
-            - WebServer
+            - Internal
         depends_on:
             - Syslogserver
         logging:
@@ -45,7 +45,7 @@ services:
         image: webserver
         container_name: WS4
         networks:
-            - WebServer
+            - Internal
         depends_on:
             - Syslogserver
         logging:
@@ -58,7 +58,8 @@ services:
         image: loadbalancer
         container_name: LB
         networks:
-            - WebServer
+            - Internal
+            - External
         ports:
             - "80:80"
         depends_on:
@@ -66,6 +67,7 @@ services:
             - WebServer2
             - WebServer3
             - WebServer4
+            - Syslogserver
         logging:
             driver: syslog
             options:
@@ -91,7 +93,8 @@ services:
         stdin_open: true
         tty: true
         networks:
-            - WebServer
+            - Internal
+            - External
         depends_on:
             - Syslogserver
         logging:
@@ -101,4 +104,6 @@ services:
                 tag: "MON"
 
 networks:
-    WebServer:
+    Internal:
+        internal: true
+    External:
