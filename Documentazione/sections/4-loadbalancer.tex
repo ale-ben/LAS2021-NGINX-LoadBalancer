@@ -5,16 +5,101 @@
 \begin{document}
 	%Il Load Balancer NGINX 
 	\section{Il Load Balancer NGINX} 
+	A questo servizio si collegheranno tutti i client che necessitano di accedere alla risorsa.
 	%Dockerfile 
 	\subsection{Dockerfile} 
-	Content Here
+	Dato che il servizio usato è lo stesso, il dockerfile è lo stesso visto nella \autoref{sec:WebserverDockerfile}.
+	%Servizio docker compose 
+	\subsection{Servizio docker compose}
+	\label{sec:LoadBalancerDockerCompose}
+	\begin{lstlisting}[caption=Load Balancer Docker Compose] 
+LoadBalancer:
+	build: Dockerfiles/load-balancer/.
+	image: loadbalancer
+	container_name: LB
+	networks:
+		- Internal
+		- External
+	ports:
+		- "80:80"\end{lstlisting}
+		La prima riga indica il nome univoco del servizio.\\
+		Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine se questa non è presente.\\
+		Riga 3 indica il nome dell'immagine. Se non è presente in locale verrà o presa dalla repo remota o buildata (se è presente l'istruzione build).\\
+		Riga 4 indica un nickname per il servizio.\\
+		Riga 6 impone al container di collegarsi al network \textit{Internal}, il quale non ha accesso alla rete esterna.\\
+		Riga 7 Consente al container di collegari al network \textit{External}, il quale ha accesso alla rete esterna.\\
+		Riga 9 Specifica il mapping delle porte in ingresso, la porta del container deve coincidere con quella specificata nel config del Load Balancer.
+	\paragraph{Per implementare un sistema multi host} 
+	La riga 6 non è necessaria, dato che le macchine saranno collegate tramite rete esterna.
 	%Configurazione 
 	\subsection{Configurazione} 
-	Content Here
+	\begin{lstlisting}[caption=File di configurazione Load Balancer NGINX] 
+events {}
+http {
+	upstream balanceGroup1 {
+		server WebServer1:80;
+		server WebServer2:80;
+		server WebServer3:80;
+		server WebServer4:80;
+	}
+
+	server {
+		listen 80;
+		
+		location / {
+			proxy_pass http://balanceGroup1;
+		}
+	}
+}\end{lstlisting}
+	Alla riga 3 specifichiamo un gruppo di server di nome \textit{balanceGroup1}.\\
+	Dalla riga 4 alla riga 7 specifichiamo gli indirizzi dei server appartenenti a \textit{balanceGroup1}, in questo caso vengono
+	utilizzati degli indirizzi appartenenti alla rete \textit{Internal} ma possono essere sostituiti con normalissimi indirizzi HTTP(S).\\
+	Alla riga 11 specifichiamo su che porta ascoltare.
+	\paragraph{Per implementare un sistema multi host} Sostituire gli indirizzi alle righe 4-7 con gli indirizzi effettivi dei propri host su cui gira webserver (\autoref{sec:Webserver}), prestare particolare attenzione alle porte su cui rispondono i webserver (\autoref{sec:WebserverConfigurazione}).
 	%Modalità di load balancing 
 	\subsubsection{Modalità di load balancing} 
-	Content Here
-	%Servizio docker compose 
-\subsection{Servizio docker compose} 
-Content Here
+	NGINX supporta 3 modalità di load balancing:
+	\begin{enumerate}
+		\item Round Robin
+		\begin{itemize}
+			\item Round Robin standard (Default)
+			\item Round Robin pesato
+		\end{itemize}
+		\item Least Connected
+		\item Session Persistence (ip-hash)
+	\end{enumerate}
+	\paragraph{Round Robin}
+	La tecnica Round Robin consiste nel dividere il carico proporzionalmente tra i vari host.
+	\subparagraph{Round Robin standard (Default)} In questo caso tutti gli host hanno lo stesso peso \(\rightarrow \) il carico viene distribuito equamente tra tutti.
+	\subparagraph{Round Robin pesato} In questo caso vengono specificati dei pesi per alcuni o tutti i server, il round robin distribuisce le richieste tenendo conto dei pesi specificati.\\
+	In caso di omissione del peso questo viene considerato pari a 1.
+	\begin{lstlisting}[caption=Round Robin pesato]
+upstream balanceGroup1 {
+	server WebServer1:80 weight=3;
+	server WebServer2:80;
+	server WebServer3:80 weight=2;
+	server WebServer4:80;
+}\end{lstlisting}
+	In questo caso specifico i server 1 e 3 riceveranno rispettivamente il triplo e il doppio delle richieste rispetto ai server 2 e 4.
+	\paragraph{Least Connected} La tecnica Least Connected tiene traccia del carico di ogni server e reindirizza al server con meno carico al momento della richiesta.\\
+	Questa tecnica è molto utile nel caso in cui il tempo di risposta ad una richiesta vari significativamente in base alla richiesta, in questo caso con Least Connected
+	evitiamo di caricare un server con molte richieste in elaborazione.
+\begin{lstlisting}[caption=Least Connected]
+upstream balanceGroup1 {
+	least_conn;
+	server WebServer1:80;
+	server WebServer2:80;
+	server WebServer3:80;
+	server WebServer4:80;
+}\end{lstlisting}
+	\paragraph{Session Persistence (ip-hash)} Questa tecnica riassegna ad ogni ip sempre lo stesso server usando una funzione di hash per mappare ad ogni ip un server.
+\begin{lstlisting}[caption=Session Persistence]
+upstream balanceGroup1 {
+	ip_hash;
+	server WebServer1:80;
+	server WebServer2:80;
+	server WebServer3:80;
+	server WebServer4:80;
+}\end{lstlisting}
+	Informazioni più dettagliate sulle tipologie di load balancing di NGINX si possono trovare nella \href{https://nginx.org/en/docs/http/load_balancing.html}{documentazione di NGINX}.
 \end{document}  
