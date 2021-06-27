@@ -5,6 +5,7 @@
 \begin{document}
 	%Il server log 
 	\section{Il server log} 
+	\label{sec:Rsyslog}
 	Lo scopo di un server di log è quello di raccogliere log da altre macchine e raggrupparli in un unico posto.
 %Dockerfile 
 \subsection{Dockerfile} 
@@ -23,6 +24,8 @@ RUN echo -e "\t\tCopying Config"
 COPY Contents/rsyslog.conf /etc/rsyslog.conf
 
 ENTRYPOINT ["rsyslogd", "-n"]\end{lstlisting}
+%Analisi Dockerfile 
+\subsubsection{Analisi Dockerfile} 
 Partiamo caricando un immagine di \textit{ubuntu:21.10} da \textit{Docker Hub}, su questa immagine,
 dopo aver aggiornato le sorgenti, installiamo il server \textit{rsyslog}.\\
 Una volta installato il server facciamo pulizia del garbage creato dall'installazione, carichiamo il config di \textit{rsyslog} e

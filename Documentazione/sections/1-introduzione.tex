@@ -5,31 +5,26 @@
 \begin{document}
 	\section{Introduzione al progetto}
 	L'obiettivo del progetto è creare una serie di webserver con accesso regolato tramite load balancer e un server di log centralizzato, il tutto sfruttando il sistema di containerizzazione \textbf{Docker}.
-	%Webserver 
-	\subsection{Webserver} 
-	\begin{aquote}{F. Romano - \textit{web.pdf}}
-		Un webserver è un'applicazione software che, in esecuzione su un (host) server, è in grado di gestire le richieste di trasferimento di pagine web verso un client, di solito un web browser.
-	\end{aquote}
-	%Webserver Distribuito 
-	\subsubsection{Webserver Distribuito} 
-	\label{sec:webserverDistribuito}
-	Content Here
-	%Load Balancer 
-	\subsection{Load Balancer}
-	\begin{aquote}{Wilipedia - \textit{Bilanciamento del carico}}
-	Il load balancing è una tecnica utilizzata nell'ambito dei sistemi informatici che consiste nel distribuire il carico di elaborazione di uno specifico servizio tra più server, aumentando in questo modo scalabilità e affidabilità dell'architettura nel suo complesso.
-	\end{aquote}
-	Un \textbf{load balancer} è un software atto ad implementare una tecnica di load balancing. 
-	%Docker 
-	\subsection{Docker} 
-	\begin{aquote}{F. Romano - \textit{docker.pdf}}
-		Docker è un progetto opensource nato con lo scopo di automatizzare e semplificare la distribuzione di applicazioni.
-	\end{aquote}
-	Docker si basa sul concetto di \textit{Container} 
-	%Docker compose 
-	\subsubsection{Docker compose} 
-	Content Here
-	%Log Centralizzato 
-	\subsection{Log Centralizzato} 
-	Content Here
+	%Struttura del sistema 
+	\subsection{Struttura del sistema} 
+	Il sistema è composto da 3 componenti:
+	\begin{itemize}
+		\item Webserver
+		\begin{itemize}
+			\item Elabora e risponde alle richieste dei browser
+		\end{itemize}
+		\item Load Balancer
+		\begin{itemize}
+			\item Reindirizza le richieste dei browser ai webserver
+		\end{itemize}
+		\item Log Server
+		\begin{itemize}
+			\item Raccoglie i log di tutti i servizi in un unico posto
+		\end{itemize}
+	\end{itemize}
+	%Struttura documentazione 
+	\subsection{Struttura documentazione}
+	Nella \autoref{sec:ProgettoCompleto} verrà presentato il progetto completo e verranno analizzati i file nell'insieme.\\
+	Dalla  \autoref{sec:Webserver} alla \autoref{sec:Rsyslog} verranno analizzati i vari servizi nel dettaglio, con le relative configurazioni e immagini docker.\\
+	Nella sezione \autoref{sec:DockerSwarm} verrà fatto un approfondimento su un sistema alternativo di load balancing: Docker Swarm
 \end{document}  
