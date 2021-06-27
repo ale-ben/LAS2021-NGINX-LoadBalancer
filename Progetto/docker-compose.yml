@@ -90,25 +90,9 @@ services:
         cap_add:
             - SYSLOG
         restart: unless-stopped
-    Monitor:
-        container_name: MON
-        build: Dockerfiles/monitor/.
-        image: monitor
-        stdin_open: true
-        tty: true
-        networks:
-            - Internal
-            - External
-        depends_on:
-            - Syslogserver
-        logging:
-            driver: syslog
-            options:
-                syslog-address: "tcp://localhost:514"
-                tag: "MON"
-        restart: unless-stopped
 
 networks:
     Internal:
         internal: true
     External:
+	
