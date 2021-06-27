@@ -46,7 +46,13 @@ WebServer1:
 	Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine se questa non è presente.\\
 	Riga 3 indica il nome dell'immagine. Se non è presente in locale verrà o presa dalla repo remota o buildata (se è presente l'istruzione build).\\
 	Riga 4 indica un nickname per il servizio.\\
-	Riga 6 impone alla macchina di collegarsi al network \textit{Internal}, il quale non ha accesso alla rete esterna. 
+	Riga 6 impone alla macchina di collegarsi al network \textit{Internal}, il quale non ha accesso alla rete esterna.\\
+	È possibile mappare la cartella \textit{/www/data} dell'immagine ad una cartella fisica, al fine di poter aggiornare i file del webserver senza dover ricostruire l'immagine completa.
+	Per fare ciò basta aggiungere la voce
+	\begin{lstlisting} 
+		volumes:
+            - "[CARTELLA LOCALE WEBSERVER]:/www/data"\end{lstlisting} 
+	al servizio webserver su dockercompose MA bisogna prestare attenzione che l'immagine abbia permessi di lettura sulla cartella condivisa.
 	\paragraph{Per implementare un sistema multi host} le righe 5 e 6 vanno sostituite con la porta su cui esporre il servizio nel formato \textit{Porta fisica:Porta Virtuale}, 
 	dove:
 	\begin{itemize}
