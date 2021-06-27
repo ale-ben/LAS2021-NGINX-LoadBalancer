@@ -14,6 +14,7 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "WS1"
+        restart: unless-stopped
     WebServer2:
         build: Dockerfiles/webserver/.
         image: webserver
@@ -27,6 +28,7 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "WS2"
+        restart: unless-stopped
     WebServer3:
         build: Dockerfiles/webserver/.
         image: webserver
@@ -40,6 +42,7 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "WS3"
+        restart: unless-stopped
     WebServer4:
         build: Dockerfiles/webserver/.
         image: webserver
@@ -53,6 +56,7 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "WS4"
+        restart: unless-stopped
     LoadBalancer:
         build: Dockerfiles/load-balancer/.
         image: loadbalancer
@@ -73,12 +77,11 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "LB"
+        restart: unless-stopped
     Syslogserver:
         build: Dockerfiles/rsyslog/.
         image: syslogserver
         container_name: Syslog
-        hostname: syslog
-        restart: always
         volumes:
             - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0157-Laboratorio_Amministrazione_Sistema/LAS2021-NGINX-LoadBalancer/Progetto/logs:/var/log"
         ports:
@@ -86,6 +89,7 @@ services:
             - 514:514/udp
         cap_add:
             - SYSLOG
+        restart: unless-stopped
     Monitor:
         container_name: MON
         build: Dockerfiles/monitor/.
@@ -102,6 +106,7 @@ services:
             options:
                 syslog-address: "tcp://localhost:514"
                 tag: "MON"
+        restart: unless-stopped
 
 networks:
     Internal:

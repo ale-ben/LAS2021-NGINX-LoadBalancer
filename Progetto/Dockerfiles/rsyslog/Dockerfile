@@ -1,4 +1,3 @@
-
 FROM ubuntu:21.10
 
 RUN echo -e "\t\Updating system and installing rsyslog" \
