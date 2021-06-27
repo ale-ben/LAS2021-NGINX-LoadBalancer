@@ -16,20 +16,21 @@
 	\label{sec:WebserverDockerfile}
 	Di seguito il dockerfile per la creazione di un singolo webhost NGINX.
 	\begin{lstlisting}[language=XML, caption=Dockerfile Webserver NGINX] 
-FROM nginx:1.21.0
+FROM nginx:1.20.0
 RUN echo -e "\t\tCopying Config"
 COPY Contents/nginx.conf /etc/nginx/nginx.conf
 RUN echo -e "\t\tCopying WebServer"
-COPY Contents/website /www/data\end{lstlisting}
-	Questo dockerfile sarà lo stesso per il webserver e per il loadbalancer, entrambi usano NGINX, le differenze si vedranno nella configurazione del servizio e del container (\autoref{sec:WebserverConfigurazione} e \autoref{sec:WebserverDockerCompose}).
+COPY Contents/website /www/data
+RUN echo -e "\t\Setting Permissions"
+RUN chmod -R 555 /www/data/.
+RUN chmod 555 /etc/nginx/nginx.conf\end{lstlisting}
 	%Analisi Dockerfile 
 	\subsubsection{Analisi Dockerfile} 
 	Scegliamo di utilizzare l'immagine \textit{nginx} alla versione \textit{1.21.0} presente nella \href{https://hub.docker.com/_/nginx}{repository di immagini ufficiale docker}.\\ 
 	Si può facilmente notare che questa è una versione ufficiale poichè non	è preceduta dal nome dell'utente che la gestisce 
-	(altrimenti sarebbe \textit{utente/nginx}).
-
-	L'unica modifica che facciamo all'immagine è caricare il nostro file \textit{nginx.conf} nella cartella \textit{/etc/nginx/}. Andremo ad analizzare il file di config nella \autoref{sec:WebserverConfigurazione}.
-	
+	(altrimenti sarebbe \textit{utente/nginx}).\\
+	La prima modifica che facciamo all'immagine è caricare il nostro file \textit{nginx.conf} nella cartella \textit{/etc/nginx/}. Andremo ad analizzare il file di config nella \autoref{sec:WebserverConfigurazione}.\\
+	Successivamente ci assicuriamo che il config e i file del webserver abbiano i giusti permessi, assegnando \textit{rx} ad utente, gruppo e altri. 
 	%Servizio docker compose 
 	\subsection{Servizio docker compose} 
 	\label{sec:WebserverDockerCompose}
