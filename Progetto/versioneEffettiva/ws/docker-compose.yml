@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    WebServer:
+        build: Dockerfiles/webserver/.
+        image: webserver
+        container_name: WS
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://[IP Syslogserver]:514"
+                tag: "WSN"
+        restart: unless-stopped

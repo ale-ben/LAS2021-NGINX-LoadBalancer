@@ -1,0 +1,33 @@
+\documentclass[../DocumentazioneProgetto.tex]{subfiles}
+
+\graphicspath{{./resources/capitolo1/}{../../AAA_Common_Resources/}}
+
+\begin{document}
+	\section{Introduzione al progetto}
+	L'obiettivo del progetto è creare una serie di webserver con accesso regolato tramite load balancer e un server di log centralizzato, il tutto sfruttando il sistema di containerizzazione \textbf{Docker}.
+	%Repo Github 
+	\subsection{Repo Github} 
+	L'intero progetto si può trovare su Github all'indirizzo \href{https://github.com/ale-ben/LAS2021-NGINX-LoadBalancer}{https://github.com/ale-ben/LAS2021-NGINX-LoadBalancer}
+	%Struttura del sistema 
+	\subsection{Struttura del sistema} 
+	Il sistema è composto da 3 componenti:
+	\begin{itemize}
+		\item Webserver
+		\begin{itemize}
+			\item Elabora e risponde alle richieste dei browser
+		\end{itemize}
+		\item Load Balancer
+		\begin{itemize}
+			\item Reindirizza le richieste dei browser ai webserver
+		\end{itemize}
+		\item Log Server
+		\begin{itemize}
+			\item Raccoglie i log di tutti i servizi in un unico posto
+		\end{itemize}
+	\end{itemize}
+	%Struttura documentazione 
+	\subsection{Struttura documentazione}
+	Nella \autoref{sec:ProgettoCompleto} verrà presentato il progetto completo e verranno analizzati i file nell'insieme.\\
+	Dalla  \autoref{sec:Webserver} alla \autoref{sec:Rsyslog} verranno analizzati i vari servizi nel dettaglio, con le relative configurazioni e immagini docker.\\
+	Nella sezione \autoref{sec:DockerSwarm} verrà fatto un approfondimento su un sistema alternativo di load balancing: Docker Swarm
+\end{document}  

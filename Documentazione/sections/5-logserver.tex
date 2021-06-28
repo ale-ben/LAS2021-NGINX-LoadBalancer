@@ -1,0 +1,175 @@
+\documentclass[../DocumentazioneProgetto.tex]{subfiles}
+
+\graphicspath{{./resources/capitolo1/}{../../AAA_Common_Resources/}}
+
+\begin{document}
+	%Il server log 
+	\section{Il server log} 
+	\label{sec:Rsyslog}
+	Lo scopo di un server di log è quello di raccogliere log da altre macchine e raggrupparli in un unico posto.
+%Dockerfile 
+\subsection{Dockerfile} 
+\label{sec:RsyslogDockerfile}
+Il server log rsyslog verrà implementato senza usare un immagine docker pre-compilata, installando le componenti manualmente.
+\begin{lstlisting}[language=XML, caption=Dockerfile Rsyslog] 
+FROM ubuntu:21.10
+
+RUN echo -e "\t\Updating system and installing rsyslog" \
+&& apt-get update \
+&& apt-get install --no-install-recommends -y rsyslog \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN echo -e "\t\tCopying Config"
+COPY Contents/rsyslog.conf /etc/rsyslog.conf
+
+ENTRYPOINT ["rsyslogd", "-n"]\end{lstlisting}
+%Analisi Dockerfile 
+\subsubsection{Analisi Dockerfile} 
+Partiamo caricando un immagine di \textit{ubuntu:21.10} da \textit{Docker Hub}, su questa immagine,
+dopo aver aggiornato le sorgenti, installiamo il server \textit{rsyslog}.\\
+Una volta installato il server facciamo pulizia del garbage creato dall'installazione, carichiamo il config di \textit{rsyslog} e
+impostiamo come punto di partenza il comando \textit{rsyslogd -n}.  
+
+
+%Servizio docker compose 
+\subsection{Servizio docker compose} 
+\begin{lstlisting}[caption=Rsyslog Docker Compose] 
+Syslogserver:
+	build: Dockerfiles/rsyslog/.
+	image: syslogserver
+	container_name: Syslog
+	volumes:
+		- "[PERCORSO COMPLETO CARTELLA LOG LOCALE]:/var/log"
+	ports:
+		- 514:514
+		- 514:514/udp
+	cap_add:
+		- SYSLOG\end{lstlisting}
+La prima riga indica il nome univoco del servizio.\\
+Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine se questa non è presente.\\
+Riga 3 indica il nome dell'immagine. Se non è presente in locale verrà o presa dalla repo remota o buildata (se è presente l'istruzione build).\\
+Riga 4 indica un nickname per il servizio.\\
+Riga 6 mappa una directory locale in cui salvare i log alla directory remota \textit{/var/log}. Su questa cartella locale saranno salvati i log ricevuti dalle macchine\\
+Riga 8 e 9 Aprono la port 514 in TCP e UDP per consentire al server di ricevere i log.\\
+Se si intende usare solo uno dei protocolli (TCP o UDP), la porta relativa all'altro protocollo va eliminata.\\
+Riga 11 specifica che il server ha bisogno di permessi aggiuntivi di tipo \textit{SYSLOG}, per info su questi permessi consultare \textit{man 7 capabilities}. 
+		
+%Configurazione 
+\subsection{Configurazione} 
+\begin{lstlisting}[language=Bash, caption=File di configurazione Rsyslog] 
+# Commentare per disabilitare UDP logging
+#module(load="imudp")
+#input(type="imudp" port="514")
+
+# Commentare per disabilitare TCP logging
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+# Template nome file log remoto
+template(name="RemoteDirTemplate" type="string" string="/var/log/remote/%$year%/%$Month%/%$Day%/%$Hour%-%APP-NAME%.log")
+# Regole di log
+if ($source != "localhost") then {
+	action(type="omfile" dynaFile="RemoteDirTemplate")
+}\end{lstlisting}
+In questa configurazione abilitiamo solo la versione TCP del servizio di log, per abilitare anche UDP è necessario rimuovere il commento dalle righe 2 e 3.\\
+Alla riga 3 e 7 definiamo le porte per il servizio di log rispettivamente UDP e TCP, queste porte possono esssere modificate ma DEVONO corrispondere a quelle definite alle righe 8 e 9 nella \autoref{sec:RsyslogDockerfile}.\\
+La riga 10 definisce il template per il nome dei file su cui salvare i log remoti, verrà analizzata a parte nella \autoref{sec:RsyslogTemplate}.\\
+Le righe 12 e 13 applicano il template definito alla riga 10 solo ai log provenienti da sorgenti esterne, ovvero con l'attributo \textit{source} diverso da \textit{localhost}.  
+
+%Template nome file 
+\subsubsection{Template nome file} 
+\label{sec:RsyslogTemplate}
+Il template per il nome di file è il seguente: \\
+\textit{/var/log/remote/\%\$year\%/\%\$Month\%/\%\$Day\%/\%\$Hour\%-\%APP-NAME\%.log}
+
+Possiamo suddividere il template in 3 parti:
+\begin{enumerate}
+	\item \textit{/var/log/remote/}
+	\begin{itemize}
+		\item Percorso FISSO della cartella root su cui salvare i log.
+	\end{itemize}
+	\item \textit{\%\$year\%/\%\$Month\%/\%\$Day\%/}
+	\begin{itemize}
+		\item Percorso VARIABILE della cartella finale su cui salvare i log.
+		\item Dipende da:
+		\begin{itemize}
+			\item \textit{\$year}
+			\item \textit{\$Month}
+			\item \textit{\$Day}
+		\end{itemize}
+	\end{itemize}
+	\item \textit{\%\$Hour\%-\%APP-NAME\%.log}
+	\begin{itemize}
+		\item Nome del file in cui salvare i log
+		\item Dipende da:
+		\item \begin{itemize}
+			\item \textit{\$Hour}
+			\item \textit{\$APP-NAME}
+			\begin{itemize}
+				\item Identificativo del programma remoto da cui sono originati i log
+				\item Può essere sostituito con \textit{\$fromhost}, l'hostname (o indirizzo ip de DNS non disponibile) della sorgente.
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{enumerate}
+Se ad esempio la macchina con il programma \textit{pippo} generasse un log il 01/01/1970 alle ore 00:05, il percorso finale verrebbe ad essere:\\
+\textit{\textit{/var/log/remote/1970/01/01-pippo.log}}\\
+È stato scelto questo ordine delle variabili arbitrariamente, raccogliere i log per data e ora e, in seguito per macchina, consente di avere una migliore visione di insieme.\\
+Altre alternative valide sarebbero potute essere:
+\begin{itemize}
+	\item \textit{/var/log/remote/\%APP-NAME\%-\%\$year\%/\%\$Month\%/\%\$Day\%/\%\$Hour\%.log}
+	\begin{itemize}
+		\item Suddivide prima per macchine e, successivamente, per data.
+		\item Fornisce una migliore visione temporale per le singole macchine ma peggiore visione di insieme sul sistema completo.
+	\end{itemize}
+	\item \textit{/var/log/remote/\%\$year\%/\%\$Month\%/\%\$Day\%/\%\$Hour\%.log}
+	\begin{itemize}
+		\item Ignora l'attributo \textit{APP-NAME}, raccoglie i log di tutte le macchine nello stesso file, suddivisi per data.
+		\item Visione d'insieme sul sistema completo MA rischio di generare file molto pesanti e di difficile lettura. 
+	\end{itemize}
+	\item Qualunque altra configurazione con le variabili presenti sopra e altre dalla \href{https://www.rsyslog.com/doc/master/configuration/properties.html}{documentazione ufficiale rsynclog}
+\end{itemize}
+%Ricerca di un file di log 
+\subsection{Ricerca di un file di log} 
+Usando il template definito sopra, per cercare un file di log si può usare il seguente script bash:
+\begin{lstlisting}[language=Bash, caption=Script per ricercare log dati specifici parametri] 
+#!/bin/sh
+
+HOST="WS1"
+YEAR=""
+MONTH=""
+DAY=""
+
+LIMIT="5" # Numero massimo di elementi da visualizzare
+SEPARATOR="/" # / su sistemi base Unix o Darwin, \ su sistemi base MS-DOS
+BASE_DIR="./remote" # Directory di partenza
+
+if [ -z "$HOST" ]; then
+	HOST=".*"
+fi
+
+if [ -z "$YEAR" ]; then
+	YEAR="[0-9][0-9][0-9][0-9]"
+fi
+
+if [ -z "$MONTH" ]; then
+	MONTH="[0-9][0-9]"
+fi
+
+if [ -z "$DAY" ]; then
+	DAY="[0-9][0-9]"
+fi
+
+if [ -z "$BASE_DIR" ]; then
+	BASE_DIR="."
+fi
+
+REGEX=".*$SEPARATOR$YEAR$SEPARATOR$MONTH$SEPARATOR$DAY$SEPARATOR[0-9][0-9]-$HOST.log"
+
+if [ -z "$LIMIT" ]; then
+	find $BASE_DIR -regex $REGEX
+else
+	find $BASE_DIR -regex $REGEX | head -$LIMIT
+fi\end{lstlisting}
+\end{document}  

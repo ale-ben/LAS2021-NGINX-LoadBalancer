@@ -1,2 +1,0 @@
-\contentsline {section}{\numberline {1}Introduzione alle reti di calcolatori.}{1}{section.1}%
-\contentsline {section}{\numberline {2}Lo strato fisico}{2}{section.2}%

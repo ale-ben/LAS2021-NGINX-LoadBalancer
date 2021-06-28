@@ -4,28 +4,66 @@ services:
     WebServer1:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
-            - WebServer
+        container_name: WS1
+        networks:
+            - Internal
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS1"
+        restart: unless-stopped
     WebServer2:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
-            - WebServer
+        container_name: WS2
+        networks:
+            - Internal
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS2"
+        restart: unless-stopped
     WebServer3:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
-            - WebServer
+        container_name: WS3
+        networks:
+            - Internal
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS3"
+        restart: unless-stopped
     WebServer4:
         build: Dockerfiles/webserver/.
         image: webserver
-        networks: 
-            - WebServer
+        container_name: WS4
+        networks:
+            - Internal
+        depends_on:
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "WS4"
+        restart: unless-stopped
     LoadBalancer:
         build: Dockerfiles/load-balancer/.
         image: loadbalancer
-        networks: 
-            - WebServer
+        container_name: LB
+        networks:
+            - Internal
+            - External
         ports:
             - "80:80"
         depends_on:
@@ -33,14 +71,28 @@ services:
             - WebServer2
             - WebServer3
             - WebServer4
-    Monitor:
-        container_name: MON
-        build: Dockerfiles/monitor/.
-        image: monitor
-        stdin_open: true
-        tty: true
-        networks: 
-            - WebServer
+            - Syslogserver
+        logging:
+            driver: syslog
+            options:
+                syslog-address: "tcp://localhost:514"
+                tag: "LB"
+        restart: unless-stopped
+    Syslogserver:
+        build: Dockerfiles/rsyslog/.
+        image: syslogserver
+        container_name: Syslog
+        volumes:
+            - "/Users/alessandrobenetton/OneDrive - Cá Foscari - Virtual LABs/University/III_Anno/CT0157-Laboratorio_Amministrazione_Sistema/LAS2021-NGINX-LoadBalancer/Progetto/logs:/var/log"
+        ports:
+            - 514:514
+            - 514:514/udp
+        cap_add:
+            - SYSLOG
+        restart: unless-stopped
 
 networks:
-    WebServer:
+    Internal:
+        internal: true
+    External:
+    
