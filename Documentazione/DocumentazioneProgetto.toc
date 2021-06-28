@@ -11,10 +11,10 @@
 \contentsline {subsection}{\numberline {2.2}Screenshot funzionamento}{6}{subsection.2.2}%
 \contentsline {section}{\numberline {3}I webserver NGINX}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Dockerfile}{7}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Analisi Dockerfile}{7}{subsubsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.2}Servizio docker compose}{7}{subsection.3.2}%
-\contentsline {paragraph}{Per implementare un sistema multi host}{8}{section*.4}%
-\contentsline {subsection}{\numberline {3.3}Configurazione}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.1.1}Analisi Dockerfile}{8}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2}Servizio docker compose}{8}{subsection.3.2}%
+\contentsline {paragraph}{Per implementare un sistema multi host}{9}{section*.4}%
+\contentsline {subsection}{\numberline {3.3}Configurazione}{9}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Il Load Balancer NGINX}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Dockerfile}{10}{subsection.4.1}%
 \contentsline {subsubsection}{\numberline {4.1.1}Analisi Dockerfile}{10}{subsubsection.4.1.1}%

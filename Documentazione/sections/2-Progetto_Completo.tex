@@ -1,6 +1,6 @@
 \documentclass[../DocumentazioneProgetto.tex]{subfiles}
 
-\graphicspath{{./resources/capitolo1/}{../../AAA_Common_Resources/}}
+\graphicspath{{../resources/2-Progetto_Completo}}
 
 \begin{document}
 	%Il progetto completo 
@@ -193,5 +193,37 @@ services:
 
 	%Screenshot funzionamento 
 	\subsection{Screenshot funzionamento} 
-	Content Here
+	\begin{figure}[ht]
+		\includegraphics[width=15cm]{images/dcLog.png}
+		\centering
+		\caption{Log di avvio servizi e richieste distribuite}
+		\label{fig:dcLog}
+	\end{figure}
+	Come si vede dalla \autoref{fig:dcLog}, il primo servizio avviato è il server log, seguito dai 4 webserver in parallelo e, per ultimo, dal load balancer.\\
+	Una volta avviato, il load balancer risponde alle richieste dei client distribuendole tra i server definiti nel config, come visibile nelle ultime righe della \autoref{fig:dcLog}.
+
+	\begin{figure}[ht]
+		\includegraphics[width=10cm]{images/logDir.png}
+		\centering
+		\caption{Cartella di salvataggio server di log (\autoref{sec:Rsyslog})}
+		\label{fig:logDir}
+	\end{figure}
+	Nella \autoref{fig:logDir} si può notare il template del server di log in azione, i file vengono suddivisi secondo il template e, come previsto, ogni ora viene generato un nuovo file di log.
+
+	\begin{figure}[ht]
+		\includegraphics[width=15cm]{images/logFile.png}
+		\centering
+		\caption{Contenuto del file di log \textit{2021/06/28/14-LB.log}}
+		\label{fig:logFile}
+	\end{figure}
+	La \autoref{fig:logFile} mostra il contenuto di uno dei file di log del server di log (\autoref{sec:Rsyslog}).\\
+	Ogni riga contiene:
+	\begin{enumerate}
+		\item Un timestamp di ricezione del log
+		\item Indirizzo ip del mittente
+		\item Tag del servizio
+		\item Pid del servizio
+		\item Messaggio
+	\end{enumerate}
+	Come previsto i messaggi mostrati in \autoref{fig:logFile} corrispondono con i log del servizio LB visti in \autoref{fig:dcLog}.
 \end{document}  
