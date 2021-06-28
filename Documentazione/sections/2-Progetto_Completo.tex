@@ -191,6 +191,17 @@ services:
 	È necessario aggiornare l'indirizzo del server di log in \textit{syslog-server} con l'indirizzo della macchina su cui gira il servizio Syslogserver, è inoltre necessario inserire un id univoco nella sezione \textit{tag} del logging al fine di consentire al server log di distinguere tra le varie istanze del webserver.\\
 	\textbf{Dato che non abbiamo più un network docker, è necessario esporre le porte 80 di tutti gli host alla rete interna, al fine di consentire al load balancer reindirizzare le richieste.} 
 
+	%Come avviare un docker compose 
+	\subsection{Come avviare un docker compose} 
+	Per avviare un docker compose è sufficiente, una volta avviato il deamon docker, posizionarsi nella cartella contenente il file docker compose ed eseguire 
+	il comando \textit{docker compose up}, questo comando creerà e avvierà tutti i servizi descritti nel file. 
+
+	È inoltre possibile avviare solo una parte dei servizi specificando dopo up il nome del servizio come definito nel docker compose.
+
+	Per terminare tutti i servizi si usa il comando \textit{docker compose down}.
+
+	Per comandi più avanzati visitare la \href{https://docs.docker.com/compose/reference/}{documentazione ufficiale docker compose cli}.
+
 	%Screenshot funzionamento 
 	\subsection{Screenshot funzionamento} 
 	\begin{figure}[ht]
