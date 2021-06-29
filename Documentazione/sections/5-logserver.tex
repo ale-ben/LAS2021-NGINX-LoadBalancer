@@ -108,7 +108,7 @@ Possiamo suddividere il template in 3 parti:
 			\item \textit{\$APP-NAME}
 			\begin{itemize}
 				\item Identificativo del programma remoto da cui sono originati i log
-				\item Può essere sostituito con \textit{\$fromhost}, l'hostname (o indirizzo ip de DNS non disponibile) della sorgente.
+				\item Può essere sostituito con \textit{\$fromhost}, l'hostname della sorgente (o indirizzo ip se DNS non disponibile).
 			\end{itemize}
 		\end{itemize}
 	\end{itemize}
@@ -120,7 +120,7 @@ Altre alternative valide sarebbero potute essere:
 \begin{itemize}
 	\item \textit{/var/log/remote/\%APP-NAME\%-\%\$year\%/\%\$Month\%/\%\$Day\%/\%\$Hour\%.log}
 	\begin{itemize}
-		\item Suddivide prima per macchine e, successivamente, per data.
+		\item Suddivide prima per macchina e, successivamente, per data.
 		\item Fornisce una migliore visione temporale per le singole macchine ma peggiore visione di insieme sul sistema completo.
 	\end{itemize}
 	\item \textit{/var/log/remote/\%\$year\%/\%\$Month\%/\%\$Day\%/\%\$Hour\%.log}
