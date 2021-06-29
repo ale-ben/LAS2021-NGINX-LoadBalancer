@@ -41,6 +41,7 @@ LoadBalancer:
 	La riga 6 non è necessaria, dato che le macchine saranno collegate tramite rete esterna.
 	%Configurazione 
 	\subsection{Configurazione} 
+	\label{sec:LoadBalancerConfig}
 	\begin{lstlisting}[caption=File di configurazione Load Balancer NGINX] 
 events {}
 http {
@@ -100,7 +101,7 @@ upstream balanceGroup1 {
 	server WebServer3:80;
 	server WebServer4:80;
 }\end{lstlisting}
-	\paragraph{Session Persistence (ip-hash)} Questa tecnica riassegna ad ogni ip sempre lo stesso server usando una funzione di hash per mappare ad ogni ip un server.
+	\paragraph{Session Persistence (ip-hash)} Questa tecnica assegna ad ogni ip sempre lo stesso server usando una funzione di hash per mappare ad ogni ip un server.
 \begin{lstlisting}[caption=Session Persistence]
 upstream balanceGroup1 {
 	ip_hash;

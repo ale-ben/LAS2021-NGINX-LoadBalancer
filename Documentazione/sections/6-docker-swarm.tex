@@ -9,7 +9,7 @@
 	\label{sec:DockerSwarm}
 	%--scale 
 	\subsection{--scale} 
-	Avviando il docker compose con il flag \textit{--scale nome\_servizio=n} docker crea automaticamente \(n\) istanze del servizio \textit{nome\_servizio} e gestisce automaticamente il load balancing con tecnica Round Robin.\\
+	Avviando docker compose con il flag \textit{--scale nome\_servizio=n}, docker crea automaticamente \(n\) istanze del servizio \textit{nome\_servizio} e gestisce automaticamente il load balancing con tecnica Round Robin.\\
 	Da notare che per effettuare uno scaling automatico, docker richiede che nel compose del servizio non sia presente l'attributo \textit{container\_name}.\\ 
 	Questa era un opzione disponibile anche come flag dentro a docker compose v2 ma è stata deprecata in favore di docker swarm. 
 

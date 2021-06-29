@@ -12,7 +12,7 @@
 	la seconda relativa ad un ambiente reale.
 	%Versione simulata 
 	\subsubsection{Versione simulata}
-	Questo è il docker compose usato nel progetto, in un ambiente reale una configurazione simile avrebbe poco senso.
+	Questo è il docker compose usato nel progetto, in un ambiente reale una configurazione simile avrebbe poco senso poichè prevede l'esecuzione di molteplici webhost sulla stessa macchina fisica.
 	\begin{lstlisting}[language=XML, caption=Docker Compose Progetto] 
 version: "3"
 
@@ -113,15 +113,15 @@ networks:
 	External:\end{lstlisting}
 	%Analisi Docker Compose 
 	\subsubsection{Analisi Docker Compose}
-	Nel file sono presenti 6 servizi di cui: 4 web server, 1 load balancer e 1 server log.\\
-	In questa configurazione l'unica porta da esporre verso l'esterno è la 80 indirizzata all'ip della macchina su cui girano tutti i servizi.\\
+	Nel file sono presenti 6 servizi, di cui: 4 web server, 1 load balancer e 1 server log.\\
+	In questa configurazione l'unica porta da esporre verso l'esterno è la porta 80 indirizzata all'ip della macchina su cui girano tutti i servizi.\\
 	Verrà esposta anche la 514 ma NON è necessario esporla fuori dalla lan locale.\\
 	I dettagli di configurazione dei vari servizi verranno analizzati in seguito nelle relative sezioni, si noti però
 	che tutti i servizi hanno delle caratteristiche comuni:
 	\begin{itemize}
-		\item \textit{build}: Eventuale percorso al Dockerfile per construire l'immagine
-		\item \textit{image}: Nome dell'immagine da usare O nome dell'immagine costruita tramite build
-		\item \textit{container\_name}: Nome univoco nel sistema del container
+		\item \textit{build}: Eventuale percorso al Dockerfile per costruire l'immagine
+		\item \textit{image}: Nome dell'immagine da usare, oppure nome dell'immagine costruita tramite build
+		\item \textit{container\_name}: Nome univoco del container nel sistema
 		\item \textit{networks}: Lista di network a cui collegare il sistema
 		\item \textit{depends\_on}: Lista di servizi da avviare prima del servizio in questione
 		\item \textit{logging}
@@ -168,7 +168,8 @@ services:
 			- SYSLOG
 		restart: unless-stopped\end{lstlisting}
 		Nel primo file troviamo il load balancer e il server log.\\
-		La porta 80 del load balancer deve essere esposta al di fuori della lan locale, la 514 del server log deve essere esposta SOLO SE le macchine su cui gireranno i webserver saranno al di fuori della rete locale.
+		La porta 80 del load balancer deve essere esposta al di fuori della lan locale, la 514 del server log deve essere esposta SOLO SE le macchine su cui gireranno i webserver saranno al di fuori della rete locale.\\
+		È inoltre importante ricordarsi di aggiornare gli ip nel config del load balancer per puntare agli ip delle macchine effettive su cui girano i webhost (\autoref{sec:LoadBalancerConfig}).
 
 \begin{lstlisting}[language=XML, caption=Docker Compose Reale Load Balancer] 
 version: "3"
@@ -193,7 +194,7 @@ services:
 
 	%Come avviare un docker compose 
 	\subsection{Come avviare un docker compose} 
-	Per avviare un docker compose è sufficiente, una volta avviato il deamon docker, posizionarsi nella cartella contenente il file docker compose ed eseguire 
+	Per avviare un docker compose è sufficiente, una volta avviato il daemon docker, posizionarsi nella cartella contenente il file docker compose ed eseguire 
 	il comando \textit{docker compose up}, questo comando creerà e avvierà tutti i servizi descritti nel file. 
 
 	È inoltre possibile avviare solo una parte dei servizi specificando dopo up il nome del servizio come definito nel docker compose.
@@ -210,7 +211,7 @@ services:
 		\caption{Log di avvio servizi e richieste distribuite}
 		\label{fig:dcLog}
 	\end{figure}
-	Come si vede dalla \autoref{fig:dcLog}, il primo servizio avviato è il server log, seguito dai 4 webserver in parallelo e, per ultimo, dal load balancer.\\
+	Come si vede nella \autoref{fig:dcLog}, il primo servizio avviato è il server log, seguito dai 4 webserver in parallelo e, per ultimo, dal load balancer.\\
 	Una volta avviato, il load balancer risponde alle richieste dei client distribuendole tra i server definiti nel config, come visibile nelle ultime righe della \autoref{fig:dcLog}.
 
 	\begin{figure}[ht]
@@ -227,7 +228,7 @@ services:
 		\caption{Contenuto del file di log \textit{2021/06/28/14-LB.log}}
 		\label{fig:logFile}
 	\end{figure}
-	La \autoref{fig:logFile} mostra il contenuto di uno dei file di log del server di log (\autoref{sec:Rsyslog}).\\
+	La \autoref{fig:logFile} mostra il contenuto di uno dei file di log (\autoref{sec:Rsyslog}).\\
 	Ogni riga contiene:
 	\begin{enumerate}
 		\item Un timestamp di ricezione del log
@@ -236,5 +237,5 @@ services:
 		\item Pid del servizio
 		\item Messaggio
 	\end{enumerate}
-	Come previsto i messaggi mostrati in \autoref{fig:logFile} corrispondono con i log del servizio LB visti in \autoref{fig:dcLog}.
+	Come previsto, i messaggi mostrati in \autoref{fig:logFile} corrispondono con i log del servizio LB visti in \autoref{fig:dcLog}.
 \end{document}  
