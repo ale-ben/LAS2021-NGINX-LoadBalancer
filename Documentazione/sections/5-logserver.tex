@@ -47,7 +47,7 @@ Syslogserver:
 	cap_add:
 		- SYSLOG\end{lstlisting}
 La prima riga indica il nome univoco del servizio.\\
-Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine se questa non è presente.\\
+Riga 2 è opzionale e indica il percorso in cui effettuare la build dell'immagine, se questa non è presente.\\
 Riga 3 indica il nome dell'immagine. Se non è presente in locale verrà o presa dalla repo remota o buildata (se è presente l'istruzione build).\\
 Riga 4 indica un nickname per il servizio.\\
 Riga 6 mappa una directory locale in cui salvare i log alla directory remota \textit{/var/log}. Su questa cartella locale saranno salvati i log ricevuti dalle macchine\\
@@ -113,7 +113,7 @@ Possiamo suddividere il template in 3 parti:
 		\end{itemize}
 	\end{itemize}
 \end{enumerate}
-Se ad esempio la macchina con il programma \textit{pippo} generasse un log il 01/01/1970 alle ore 00:05, il percorso finale verrebbe ad essere:\\
+Se, ad esempio, la macchina con il programma \textit{pippo} generasse un log il 01/01/1970 alle ore 00:05, il percorso finale verrebbe ad essere:\\
 \textit{\textit{/var/log/remote/1970/01/01-pippo.log}}\\
 È stato scelto questo ordine delle variabili arbitrariamente, raccogliere i log per data e ora e, in seguito per macchina, consente di avere una migliore visione di insieme.\\
 Altre alternative valide sarebbero potute essere:

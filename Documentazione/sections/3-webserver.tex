@@ -7,8 +7,8 @@
 	\section{I webserver NGINX}
 	\label{sec:Webserver}
 	Per l'implementazione del webserver vero e proprio useremo NGINX.\\
-	La scelta di usare NGINX è arbitraria, si sarebbe tranquillamente potuto usare un qualunque server web\\
-	Partiremo da un immagine docker con NGINX pre installato e la integreremo nel nostro insieme di servizi docker.
+	La scelta di usare NGINX è arbitraria, si sarebbe tranquillamente potuto usare un qualunque altro server web.\\
+	Partiremo da un immagine docker con NGINX pre installato e la integreremo nel nostro insieme di servizi.
 
 	Nella sezione \textit{\nameref{sec:IntroduzioneStrutturaSistema}} si è detto che vi saranno molteplici webserver tra cui dividere le richieste,
 	nella realtà questi webserver si dovrebbero trovare su macchine differenti al fine di dividere il carico ma, dato che questo progetto è puramente dimostrativo, qui verranno implementate nello stesso host come istanze della stessa immagine docker (verranno comunque evidenziati i cambiamenti necessari per implementare la soluzione multi host).

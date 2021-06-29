@@ -29,7 +29,7 @@ Il sistema è composto da 3 componenti:
 
 -   Webserver
 
-    -   Elabora e risponde alle richieste dei browser
+    -   Elabora e risponde a richieste dei browser
 
 -   Load Balancer
 
@@ -45,8 +45,8 @@ Nella verrà presentato il progetto completo e verranno analizzati i file
 nell’insieme.  
 Dalla alla verranno analizzati i vari servizi nel dettaglio, con le
 relative configurazioni e immagini docker.  
-Nella sezione verrà fatto un approfondimento su un sistema alternativo
-di load balancing: Docker Swarm
+Nella verrà fatto un approfondimento su un sistema alternativo di load
+balancing: Docker Swarm
 
 # Il progetto completo
 
@@ -58,7 +58,8 @@ al progetto, la seconda relativa ad un ambiente reale.
 ### Versione simulata
 
 Questo è il docker compose usato nel progetto, in un ambiente reale una
-configurazione simile avrebbe poco senso.
+configurazione simile avrebbe poco senso poichè prevede l’esecuzione di
+molteplici webhost sulla stessa macchina fisica.
 
 ``` xml
 version: "3"
@@ -162,22 +163,23 @@ networks:
 
 ### Analisi Docker Compose
 
-Nel file sono presenti 6 servizi di cui: 4 web server, 1 load balancer e
-1 server log.  
+Nel file sono presenti 6 servizi, di cui: 4 web server, 1 load balancer
+e 1 server log.  
 In questa configurazione l’unica porta da esporre verso l’esterno è la
-80 indirizzata all’ip della macchina su cui girano tutti i servizi.  
+porta 80 indirizzata all’ip della macchina su cui girano tutti i
+servizi.  
 Verrà esposta anche la 514 ma NON è necessario esporla fuori dalla lan
 locale.  
 I dettagli di configurazione dei vari servizi verranno analizzati in
 seguito nelle relative sezioni, si noti però che tutti i servizi hanno
 delle caratteristiche comuni:
 
--   *build*: Eventuale percorso al Dockerfile per construire l’immagine
+-   *build*: Eventuale percorso al Dockerfile per costruire l’immagine
 
--   *image*: Nome dell’immagine da usare O nome dell’immagine costruita
-    tramite build
+-   *image*: Nome dell’immagine da usare, oppure nome dell’immagine
+    costruita tramite build
 
--   *container_name*: Nome univoco nel sistema del container
+-   *container_name*: Nome univoco del container nel sistema
 
 -   *networks*: Lista di network a cui collegare il sistema
 
@@ -235,7 +237,10 @@ services:
 Nel primo file troviamo il load balancer e il server log.  
 La porta 80 del load balancer deve essere esposta al di fuori della lan
 locale, la 514 del server log deve essere esposta SOLO SE le macchine su
-cui gireranno i webserver saranno al di fuori della rete locale.
+cui gireranno i webserver saranno al di fuori della rete locale.  
+È inoltre importante ricordarsi di aggiornare gli ip nel config del load
+balancer per puntare agli ip delle macchine effettive su cui girano i
+webhost ().
 
 ``` xml
 version: "3"
@@ -269,7 +274,7 @@ load balancer reindirizzare le richieste.**
 
 ## Come avviare un docker compose
 
-Per avviare un docker compose è sufficiente, una volta avviato il deamon
+Per avviare un docker compose è sufficiente, una volta avviato il daemon
 docker, posizionarsi nella cartella contenente il file docker compose ed
 eseguire il comando *docker compose up*, questo comando creerà e avvierà
 tutti i servizi descritti nel file.
@@ -288,7 +293,7 @@ compose cli](https://docs.docker.com/compose/reference/).
 <img src="images/dcLog.png" id="fig:dcLog" style="width:15cm" alt="Log di avvio servizi e richieste distribuite" /><figcaption aria-hidden="true">Log di avvio servizi e richieste distribuite</figcaption>
 </figure>
 
-Come si vede dalla , il primo servizio avviato è il server log, seguito
+Come si vede nella , il primo servizio avviato è il server log, seguito
 dai 4 webserver in parallelo e, per ultimo, dal load balancer.  
 Una volta avviato, il load balancer risponde alle richieste dei client
 distribuendole tra i server definiti nel config, come visibile nelle
@@ -306,7 +311,7 @@ generato un nuovo file di log.
 <img src="images/logFile.png" id="fig:logFile" style="width:15cm" alt="Contenuto del file di log 2021/06/28/14-LB.log" /><figcaption aria-hidden="true">Contenuto del file di log <em>2021/06/28/14-LB.log</em></figcaption>
 </figure>
 
-La mostra il contenuto di uno dei file di log del server di log ().  
+La mostra il contenuto di uno dei file di log ().  
 Ogni riga contiene:
 
 1.  Un timestamp di ricezione del log
@@ -319,24 +324,24 @@ Ogni riga contiene:
 
 5.  Messaggio
 
-Come previsto i messaggi mostrati in corrispondono con i log del
+Come previsto, i messaggi mostrati in corrispondono con i log del
 servizio LB visti in .
 
 # I webserver NGINX
 
-Pe l’implementazione del webserver vero e proprio useremo NGINX.  
+Per l’implementazione del webserver vero e proprio useremo NGINX.  
 La scelta di usare NGINX è arbitraria, si sarebbe tranquillamente potuto
-usare un qualunque server web  
+usare un qualunque altro server web.  
 Partiremo da un immagine docker con NGINX pre installato e la
-integreremo nel nostro insieme di servizi docker.
+integreremo nel nostro insieme di servizi.
 
 Nella sezione si è detto che vi saranno molteplici webserver tra cui
-dividere le richieste, nella realtà questi webserver si troverebbero su
-macchine differenti al fine di dividere il carico ma, dato che questo
-progetto è puramente dimostrativo, qui verranno implementate nello
-stesso host come istanze della stessa immagine docker (verranno comunque
-evidenziati i cambiamenti necessari per implementare la soluzione multi
-host).
+dividere le richieste, nella realtà questi webserver si dovrebbero
+trovare su macchine differenti al fine di dividere il carico ma, dato
+che questo progetto è puramente dimostrativo, qui verranno implementate
+nello stesso host come istanze della stessa immagine docker (verranno
+comunque evidenziati i cambiamenti necessari per implementare la
+soluzione multi host).
 
 ## Dockerfile
 
@@ -369,7 +374,7 @@ abbiano i giusti permessi, assegnando *rx* ad utente, gruppo e altri.
 
 ## Servizio docker compose
 
-Aggiungiamo molteplici istanze del webserver web a docker compose
+Aggiungiamo molteplici istanze del webserver a docker compose
 
 ```
 WebServer1:
@@ -599,7 +604,7 @@ upstream balanceGroup1 {
 
 #### Session Persistence (ip-hash)
 
-Questa tecnica riassegna ad ogni ip sempre lo stesso server usando una
+Questa tecnica assegna ad ogni ip sempre lo stesso server usando una
 funzione di hash per mappare ad ogni ip un server.
 
 ```
@@ -668,7 +673,7 @@ Syslogserver:
 
 La prima riga indica il nome univoco del servizio.  
 Riga 2 è opzionale e indica il percorso in cui effettuare la build
-dell’immagine se questa non è presente.  
+dell’immagine, se questa non è presente.  
 Riga 3 indica il nome dell’immagine. Se non è presente in locale verrà o
 presa dalla repo remota o buildata (se è presente l’istruzione build).  
 Riga 4 indica un nickname per il servizio.  
@@ -750,10 +755,10 @@ Possiamo suddividere il template in 3 parti:
             -   Identificativo del programma remoto da cui sono
                 originati i log
 
-            -   Può essere sostituito con *$fromhost*, l’hostname (o
-                indirizzo ip de DNS non disponibile) della sorgente.
+            -   Può essere sostituito con *$fromhost*, l’hostname della
+                sorgente (o indirizzo ip se DNS non disponibile).
 
-Se ad esempio la macchina con il programma *pippo* generasse un log il
+Se, ad esempio, la macchina con il programma *pippo* generasse un log il
 01/01/1970 alle ore 00:05, il percorso finale verrebbe ad essere:  
 **/var/log/remote/1970/01/01-pippo.log**  
 È stato scelto questo ordine delle variabili arbitrariamente,
@@ -763,7 +768,7 @@ Altre alternative valide sarebbero potute essere:
 
 -   */var/log/remote/%APP-NAME%-%$year%/%$Month%/%$Day%/%$Hour%.log*
 
-    -   Suddivide prima per macchine e, successivamente, per data.
+    -   Suddivide prima per macchina e, successivamente, per data.
 
     -   Fornisce una migliore visione temporale per le singole macchine
         ma peggiore visione di insieme sul sistema completo.
@@ -830,7 +835,7 @@ fi
 
 ## –scale
 
-Avviando il docker compose con il flag *–scale nome_servizio=n* docker
+Avviando docker compose con il flag *–scale nome_servizio=n*, docker
 crea automaticamente *n* istanze del servizio *nome_servizio* e gestisce
 automaticamente il load balancing con tecnica Round Robin.  
 Da notare che per effettuare uno scaling automatico, docker richiede che
